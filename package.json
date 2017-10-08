@@ -1,0 +1,23 @@
+{
+  "name": "es5-es6-presentation",
+  "version": "1.0.0",
+  "description": "## start browser npm start",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve ./public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isfett/es5-es6-presentation.git"
+  },
+  "author": "Chris Stenke <chris@isfett.com> | github.com/isfett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isfett/es5-es6-presentation/issues"
+  },
+  "homepage": "https://github.com/isfett/es5-es6-presentation#readme",
+  "dependencies": {
+    "serve": "^6.2.0"
+  }
+}
