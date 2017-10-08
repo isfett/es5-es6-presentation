@@ -1,24 +1,21 @@
 import {makeRequest} from "./lib/http.js";
 import {delaySeconds} from "./lib/wait.js";
 
-makeRequest('GET','/index.html')
+makeRequest('GET','/config/config.json', 3000)
     .then(response => {
-        console.log('Contents: ' , response);
-        return response.substr(response.length-50);
+        return JSON.parse(response);
+    })
+    .then(json => {
+        console.log(json);
+        return true;
+    })
+    .then(() => {
+        return makeRequest('GET', '/index.html', 5000);
     })
     .then(response => {
-        return delaySeconds(5,response);
-    })
-    .then(response_short => {
-        console.log('short response', response_short);
+        console.log('response', response);
+        alert('loaded');
     })
     .catch((error) => {
-        console.log('Error: ', error);
-    });
-
-makeRequest('GET','/index2.html')
-    .then(response => {
-        console.log('Contents: ' , response);
-    }).catch((error) => {
         console.log('Error: ', error);
     });
