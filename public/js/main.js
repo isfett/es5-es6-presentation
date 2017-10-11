@@ -3,9 +3,23 @@ import {PURPLE, PINK, GREEN, RED} from './lib/colors.js';
 import {Square} from "./lib/Square.js";
 import {Circle} from "./lib/Circle.js";
 import {Triangle} from "./lib/Triangle.js";
+import {ImageUpload} from "./lib/ImageUpload.js";
+import {ImageUploadPosition} from "./lib/ImageUploadPosition.js";
 
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
+
+document.body.addEventListener('mytest', function(e) {
+   updateShapes();
+});
+
+function updateShapes() {
+    context.fillStyle = '#FFFFFF';
+    context.fillRect(0,0,canvas.width, canvas.height);
+    shapes.forEach(shape => {
+        shape.draw(context);
+    });
+}
 
 let shapes = [];
 
@@ -33,6 +47,14 @@ triangle.setSize(50);
 triangle.position.set(125, 125);
 shapes.push(triangle);
 
-shapes.forEach(shape => {
-    shape.draw(context);
-});
+let imageUpload = new ImageUpload('fileUpload');
+imageUpload.setSize(200, 100);
+imageUpload.position.set(80, 250);
+shapes.push(imageUpload);
+
+let imageUpload2 = new ImageUploadPosition('fileUpload2');
+imageUpload2.setSize(200, 100);
+imageUpload2.position.set(80, 360);
+shapes.push(imageUpload2);
+
+updateShapes();
